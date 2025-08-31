@@ -1,5 +1,5 @@
 #include<LPC21xx.h>
-#include "d.h"
+#include "delays.h"
 
 #define D 1<<15		
 #define R (IOPIN0&(1<<15))
@@ -92,3 +92,4 @@ int ReadTemp(void)
 	temp=temp|buff[0];
 	return(temp);
 }
+
