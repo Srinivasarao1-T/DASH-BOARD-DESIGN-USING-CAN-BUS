@@ -4,7 +4,8 @@
 #include "ADC_define.h"
 void Read_ADC(u8 chno,u16 *dval,f32 *evar)
 {
-   //CLEAR PREVIOUS CHANNEL SELECTIO      ADCR&=0XFFFFFFF0;
+   //CLEAR PREVIOUS CHANNEL SELECTIO      
+	ADCR&=0XFFFFFFF0;
 	  //UPDEATE CHANNEL NO &START ADC CONV
 	  ADCR|=(1<<ADC_START_BIT)|(1<<chno);
 	  //wait until covstation status
@@ -21,4 +22,5 @@ void Init_ADC(void)
       PINSEL1=(PINSEL1&~(3<<(28%16)*2))|(PIN_FUNC2<<(28%16)*2);
 	  ADCR=(1<<PDN_BIT)|(CLCKDIV<<8);
 }
+
 
