@@ -34,7 +34,6 @@ charLCD(223);
 charLCD('C');
 charLCD(' ');
 }
-   BuildCGRAM(fuel,64);
    cmdLCD(0xd3);
    charLCD(7);
 }
@@ -47,8 +46,7 @@ void get()
   DisplayRTCDate(dt,mo,yr);
   cmdLCD(0xc0);
   strLCD("ENG TEMP:");
-  
-	  readtemp();
+  readtemp();
   CAN1_Rx(&rxframe);
   if(rxframe.ID==1)
   {
@@ -56,7 +54,6 @@ void get()
    strLCD("FUEL(%):");
    cmdLCD(0x9d);
    flag=rxframe.Data1;
-   BuildCGRAM(fuel,40);
    cmdLCD(0x9d);
    while(flag>25){
    charLCD(4);
@@ -317,4 +314,5 @@ void  ent1_irq_right() __irq
 	   VICVectAddr=0;
     EXTINT=1<<1;
 } 
+
 
