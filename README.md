@@ -1,7 +1,31 @@
-DASH BOARD DESIGN USING CAN BUS
+# 🚗 Dashboard Design Using CAN Bus (LPC2129 + MCP2551)
 
-Description: A multi-node embedded system using CAN Bus to simulate a vehicle dashboard displaying engine temperature, fuel percentage, and left/right indicators. 
+A real-time digital dashboard project using the **LPC2129 ARM7 microcontroller** and **MCP2551 CAN transceiver** to read and display vehicle parameters like RTC, Indicator, temperature, and fuel level over a CAN bus network.
 
+---
+
+## 🧩 Features
+
+- CAN bus communication using LPC2129's internal CAN controller
+- Interface with MCP2551 for physical CAN signaling
+- Real-time data display on LCD
+- Supports standard 11-bit CAN messages
+- Scalable to support additional vehicle data
+- Efficient interrupt-driven CAN message handling
+
+---
+
+## 🔧 Hardware Overview
+
+| Component      | Description                                  |
+|---------------|----------------------------------------------|
+| **LPC2129**    | ARM7TDMI-S MCU with built-in CAN controller |
+| **MCP2551**    | CAN transceiver (handles differential CAN signaling) |
+| **Display**    | LCD HDD44780
+| **Power**      | 3.3V/5V regulated supply                     |
+| **Termination**| 120Ω resistors at both ends of CAN network   |
+
+--- 
 Key Components:
 Main Node: Reads DS18B20 temperature sensor, shows RTC and fuel level on LCD, handles indicator signals.
 
@@ -10,9 +34,6 @@ Reads fuel via ADC and sends data to Main Node.
 
 Indicator Node:
 Receives indicator status from Main Node and toggles LEDs. 
-
-Hardware: 
-LPC2129 microcontroller, MCP2551 CAN transceiver, LCD, LEDs, switches, DS18B20 temperature sensor, fuel gauge,USB to UART convertor.
 
 Software: 
 Embedded C, Keil µVision, Flash Magic. 
