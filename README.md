@@ -26,6 +26,17 @@ A real-time digital dashboard project using the **LPC2129 ARM7 microcontroller**
 | **Termination**| 120Ω resistors at both ends of CAN network   |
 
 --- 
+
+# 🧠 Software Architecture
+
+- Written in C (Keil  µVision/ Embedded C / Flash Magic)
+- Initializes CAN controller on LPC2129
+- Configures acceptance filters for desired CAN IDs
+- Uses interrupts to handle incoming messages
+- Extracts payload and updates display in real time
+
+---
+
 Key Components:
 Main Node: Reads DS18B20 temperature sensor, shows RTC and fuel level on LCD, handles indicator signals.
 
@@ -34,9 +45,6 @@ Reads fuel via ADC and sends data to Main Node.
 
 Indicator Node:
 Receives indicator status from Main Node and toggles LEDs. 
-
-Software: 
-Embedded C, Keil µVision, Flash Magic. 
 
 MAIN NODE:
 Read the temperature information and display it on LCD along with RTC information (TIME, DATE & DAY). And based on the interrupt generated, need to send the indicator signal to the indicator node and display the indicators status also on LCD. And one more task of this main node is receiving the fuel node information and display it on LCD. 
