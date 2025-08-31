@@ -142,7 +142,7 @@ main()
 	  VICVectAddr1=(u32) ent1_irq_right;
 	  VICVectAddr0=(u32) ent0_irq_left;
 	  EXTMODE=1<<0|1<<1;
-	 
+	 BuildCGRAM(fuel,64);
         while(1)
         {
 out:		  get();
@@ -152,7 +152,6 @@ out:		  get();
       DisplayRTCDay(day);
 	  if(flag==0)
 	  {
-	   BuildCGRAM(fuel,56);
 	   cmdLCD(0xdf);
 	   charLCD(6);
 	   charLCD(5);
@@ -165,7 +164,6 @@ l:			    if(cnt%2==1)
 			    while(1){
 			    for(j=0;j<10;j++)
 				 {
-				BuildCGRAM(fuel,56);
 				cmdLCD(0xDF);
 				charLCD(6);
 				charLCD(5);
@@ -200,17 +198,17 @@ l:			    if(cnt%2==1)
 				 charLCD(' ');
 				 if(cnt2%2==1)
 				{
-			  cmdLCD(0xDf);
+			    cmdLCD(0xDf);
 				charLCD(6);
 				charLCD(5);
 				txleft.Data1=2;
 				CAN1_Tx(txleft);
-         cnt=0;
+                cnt=0;
 				 goto r;
 				}
 				if(cnt%2==0)
 				{
-			  cmdLCD(0xDf);
+			    cmdLCD(0xDf);
 				charLCD(6);
 				charLCD(5);
 				txleft.Data1=2;
@@ -231,13 +229,12 @@ r:		   if(cnt2%2==1)
 				CAN1_Tx(txleft);
 			    for(j=0;j<10;j++)
 				{
-			    BuildCGRAM(fuel,56);
 				 cmdLCD(0xdf);
 				 charLCD(6);
 				  cmdLCD(0xE0);
 			     charLCD(5);
 				 GetRTCTimeInfo(&hr,&mi,&se);
-         DisplayRTCTime(hr,mi,se);
+                 DisplayRTCTime(hr,mi,se);
 				if(cnt%2==1)
 				{
 			     cmdLCD(0xDf);
@@ -249,7 +246,7 @@ r:		   if(cnt2%2==1)
 				}
 				if(cnt2%2==0)
 				{
-			        cmdLCD(0xDf);
+			    cmdLCD(0xDf);
 				strLCD("  ");
 				txleft.Data1=4; 
 				CAN1_Tx(txleft);
@@ -262,7 +259,7 @@ r:		   if(cnt2%2==1)
 				get();
 				if(cnt%2==1)
 				{
-			  cmdLCD(0xDf);
+			    cmdLCD(0xDf);
 				strLCD("  ");
 				txleft.Data1=4;
 				CAN1_Tx(txleft);
@@ -271,7 +268,7 @@ r:		   if(cnt2%2==1)
 				}
 				if(cnt2%2==0)
 				{
-			        cmdLCD(0xDf);
+			    cmdLCD(0xDf);
 				strLCD("  ");
 				txleft.Data1=4; 
 				CAN1_Tx(txleft);
@@ -280,7 +277,6 @@ r:		   if(cnt2%2==1)
 				}
 				for(j=0;j<120;j++)
 				{
-
 				cmdLCD(0xdf+1);
 				charLCD(' ');
 				 if(cnt%2==1)
@@ -290,14 +286,14 @@ r:		   if(cnt2%2==1)
 				charLCD(5);
 				txleft.Data1=4;
 				CAN1_Tx(txleft);
-        txleft.Data1=1; 
+                txleft.Data1=1; 
 				CAN1_Tx(txleft);
 				 cnt2=0;
 				 goto l;
 				}
 				if(cnt2%2==0)
 				{
-			        cmdLCD(0xDf);
+			    cmdLCD(0xDf);
 				charLCD(6);
 				charLCD(5);
 				txleft.Data1=4; 
@@ -306,7 +302,7 @@ r:		   if(cnt2%2==1)
 				 goto out;
 				}
 				} 
-								}
+				}
 			   }
         } 
 }
@@ -321,3 +317,4 @@ void  ent1_irq_right() __irq
 	   VICVectAddr=0;
     EXTINT=1<<1;
 } 
+
